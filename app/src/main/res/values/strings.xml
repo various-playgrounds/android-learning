@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Android100UI</string>
+    <string name="text_hint">Enter some text</string>
+</resources>

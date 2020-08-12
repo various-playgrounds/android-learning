@@ -1,0 +1,2 @@
+rootProject.name='Android100UI'
+include ':app'
