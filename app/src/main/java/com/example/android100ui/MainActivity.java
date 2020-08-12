@@ -20,15 +20,11 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                handleClick();
+                String text = textbox.getText().toString();
+                Toast toast = Toast.makeText(MainActivity.this, "Hello " + text, Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
-    }
-
-    private void handleClick() {
-        String text = textbox.getText().toString();
-        Toast toast = Toast.makeText(this, "Hello " + text, Toast.LENGTH_SHORT);
-        toast.show();
     }
 
     @Override
