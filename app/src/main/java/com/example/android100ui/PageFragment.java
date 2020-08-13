@@ -10,11 +10,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class PageFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";
 
     private int mPage;
+    RecyclerView recyclerView;
     EditText textbox;
 
     public static PageFragment newInstance(int page) {
@@ -34,7 +39,6 @@ public class PageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view;
         if (mPage == 1) {
             view = inflater.inflate(R.layout.fragment_page_new, container, false);
@@ -49,6 +53,14 @@ public class PageFragment extends Fragment {
                     toast.show();
                 }
             });
+        } else if (mPage == 2) {
+            view = inflater.inflate(R.layout.fragment_recycler_page, container, false);
+            this.recyclerView = view.findViewById(R.id.recycler_view);
+            this.recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+            List<Contact> contacts = Contact.createContactLists(100);
+            ContactAdapter adapter = new ContactAdapter(contacts);
+            this.recyclerView.setAdapter(adapter);
         } else {
             view = inflater.inflate(R.layout.fragment_page, container, false);
             TextView textView = (TextView) view;
